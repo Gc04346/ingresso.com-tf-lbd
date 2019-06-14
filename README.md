@@ -7,10 +7,10 @@ Projeto final de Lab de Banco de Dados 1, feito em Junho de 2019. Desenvolveremo
   - pode codar à vontade. não tenha medo de fazer cagada e estragar o projeto inteiro, pois se vc quebrar ele todo, sempre terá um restore point no git. se der gai, apague a pasta e volte ao passo 1 hehe.
   - quando terminar de trabalhar (e tiver certeza que vc não quebrou nada no projeto), execute os seguintes comandos no seu terminal para subir suas alterações para a nuvem e os colegas terem acesso:
   
-    1. $ git add .
-    2. git commit -m "<adicione um comentario sobre o que vc fez aqui>"
-    3. git push origin master
-    4. o Git vai te pedir usuário e senha. entre com seus dados corretamente e aguarde o upload
-    5. pronto!
+    1 $ git add .
+    2 $ git commit -m "<adicione um comentario sobre o que vc fez aqui>"
+    3 $ git push origin master
+    4 o Git vai te pedir usuário e senha. entre com seus dados corretamente e aguarde o upload
+    5 pronto!
   
   - pronto! você já sabe o básico sobre o Git. agora bora tirar total nessa parada galeraaaaaa \o/\o/ =D
