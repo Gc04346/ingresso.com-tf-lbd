@@ -51,3 +51,8 @@ Pedimos que nesse momento o script seja executado via PgAdmin para criação das
 ``` shell
 npm i express pg
 ```
+
+### Rodando o servidor.
+``` shell
+node index.js
+```
