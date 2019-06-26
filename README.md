@@ -1,5 +1,5 @@
 # Projeto ingresso.com
-    Projeto final de Lab de Banco de Dados 1, feito em Junho de 2019. Desenvolveremos uma aplicação simples que implemente uma simulação de uma página web que realize a venda de ingressos de cinema.
+Projeto final de Lab de Banco de Dados 1, feito em Junho de 2019. Desenvolveremos uma aplicação simples que implemente uma simulação de uma página web que realize a venda de ingressos de cinema.
 
 ## Como usar o git
 - para clonar o projeto para seu repositório local, abra o local em que vc deseja colocar a pasta do projeto e dê um $ git clone >link-do-projeto< . o link do projeto vc encontra na página do mesmo no site do github. quando vc abrir a página vc vai ver um botão escrito "clone or download". clique nele e vc verá caixinha branca com o link e um botão para copiá-lo
@@ -21,33 +21,33 @@
 
 ### Instalação do NodeJS e NPM
 ``` shell
-    sudo apt install nodejs npm   
+sudo apt install nodejs npm   
 ```
 
 ### Teste da intalação
 ``` shell
-    nodejs -v
-    npm -v
+nodejs -v
+npm -v
 ```
 
 ## PostgreSQL
 
 ### Login como usuário padrão
 ``` shell
-    su - postgres psql
+su - postgres psql
 ```
 
 ### Criando um usuário para a aplicação e garantindo privilégios
 ``` sql
-    CREATE ROLE app WITH LOGIN PASSWORD 'testeapp';
-    ALTER ROLE app CREATEDB;
-    CREATE DATABASE "cinema" OWNER "app";
-    \q -- sair do PostgreSQL.
+CREATE ROLE app WITH LOGIN PASSWORD 'testeapp';
+ALTER ROLE app CREATEDB;
+CREATE DATABASE "cinema" OWNER "app";
+\q -- sair do PostgreSQL.
 ```
 
-    Pedimos que nesse momento o script seja executado via PgAdmin para criação das tabelas do banco.
+Pedimos que nesse momento o script seja executado via PgAdmin para criação das tabelas do banco.
 
 ### Instalação da extensão para comunicação com o Banco de Dados.
 ``` shell
-    npm i express pg
+npm i express pg
 ```
