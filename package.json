@@ -1,0 +1,11 @@
+{
+	"name": "app-cinema",
+	"version": "1.0.0",
+	"description": "Aplicação para simular o trabalho de MDS",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"express": "^4.17.1",
+		"pg": "^7.11.0"
+	}
+}
