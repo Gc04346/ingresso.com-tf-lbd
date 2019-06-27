@@ -3,11 +3,11 @@ Projeto final de Lab de Banco de Dados 1, feito em Junho de 2019. Desenvolveremo
 
 ## Sobre o projeto
 Segue a arquitetura do projeto:
-<code>db_files/</code>: Arquivos utilizados na modelagem, criação e preenchimento do banco.
-<code>index.js</code>: Arquivo com a configuração e mapeamento do servidor.
-<code>queries.js</code>: Arquivo com os métodos de procura no banco de dados.
+- <code>db_files/</code>: Arquivos utilizados na modelagem, criação e preenchimento do banco.
+- <code>index.js</code>: Arquivo com a configuração e mapeamento do servidor.
+- <code>queries.js</code>: Arquivo com os métodos de procura no banco de dados.
 
-# Preparação do Ambiente
+# Preparação do AmbienteP
 
 ## NodeJS
 
