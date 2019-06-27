@@ -34,7 +34,7 @@ CREATE TABLE public.horario(
 	id_horario serial NOT NULL,
 	inicio date,
 	duracao smallint,
-	id_padrao_horario_padrao_horario integer,
+	id_padrao_horario integer,
 	CONSTRAINT horario_pk PRIMARY KEY (id_horario)
 
 );
@@ -60,9 +60,9 @@ CREATE TABLE public.sala(
 	id_sala serial NOT NULL,
 	numero smallint,
 	id_cinema integer,
-	id_padrao_horario_padrao_horario integer,
-	id_padrao_assento_padrao_assento integer,
-	id_filme_filme integer,
+	id_padrao_horario integer,
+	id_padrao_assento integer,
+	id_filme integer,
 	CONSTRAINT sala_pk PRIMARY KEY (id_sala)
 
 );
@@ -80,6 +80,8 @@ CREATE TABLE public.ingresso(
 	id_sala_sala integer,
 	id_filme_filme integer,
 	id_compra_compra integer,
+	id_horario_horario integer,
+	id_assento integer,
 	CONSTRAINT ingresso_pk PRIMARY KEY (id_ingresso)
 
 );
@@ -93,7 +95,7 @@ CREATE TABLE public.compra(
 	id_compra serial NOT NULL,
 	taxa_servico double precision,
 	total double precision,
-	id_cliente_cliente integer,
+	id_cliente integer,
 	CONSTRAINT compra_pk PRIMARY KEY (id_compra)
 
 );
@@ -122,7 +124,7 @@ CREATE TABLE public.cartao(
 	numero smallint,
 	titular varchar,
 	data_vencimento date,
-	id_cliente_cliente integer,
+	id_cliente integer,
 	CONSTRAINT cartao_pk PRIMARY KEY (id_cartao)
 
 );
@@ -166,7 +168,7 @@ CREATE TABLE public.assento(
 	fileira char,
 	tipo smallint,
 	ocupacao bool,
-	id_padrao_assento_padrao_assento integer,
+	id_padrao_assento integer,
 	CONSTRAINT assento_pk PRIMARY KEY (id_assento)
 
 );
@@ -183,35 +185,35 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- object: padrao_horario_fk | type: CONSTRAINT --
 -- ALTER TABLE public.sala DROP CONSTRAINT IF EXISTS padrao_horario_fk CASCADE;
-ALTER TABLE public.sala ADD CONSTRAINT padrao_horario_fk FOREIGN KEY (id_padrao_horario_padrao_horario)
+ALTER TABLE public.sala ADD CONSTRAINT padrao_horario_fk FOREIGN KEY (id_padrao_horario)
 REFERENCES public.padrao_horario (id_padrao_horario) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: padrao_horario_fk | type: CONSTRAINT --
 -- ALTER TABLE public.horario DROP CONSTRAINT IF EXISTS padrao_horario_fk CASCADE;
-ALTER TABLE public.horario ADD CONSTRAINT padrao_horario_fk FOREIGN KEY (id_padrao_horario_padrao_horario)
+ALTER TABLE public.horario ADD CONSTRAINT padrao_horario_fk FOREIGN KEY (id_padrao_horario)
 REFERENCES public.padrao_horario (id_padrao_horario) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: padrao_assento_fk | type: CONSTRAINT --
 -- ALTER TABLE public.sala DROP CONSTRAINT IF EXISTS padrao_assento_fk CASCADE;
-ALTER TABLE public.sala ADD CONSTRAINT padrao_assento_fk FOREIGN KEY (id_padrao_assento_padrao_assento)
+ALTER TABLE public.sala ADD CONSTRAINT padrao_assento_fk FOREIGN KEY (id_padrao_assento)
 REFERENCES public.padrao_assento (id_padrao_assento) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: padrao_assento_fk | type: CONSTRAINT --
 -- ALTER TABLE public.assento DROP CONSTRAINT IF EXISTS padrao_assento_fk CASCADE;
-ALTER TABLE public.assento ADD CONSTRAINT padrao_assento_fk FOREIGN KEY (id_padrao_assento_padrao_assento)
+ALTER TABLE public.assento ADD CONSTRAINT padrao_assento_fk FOREIGN KEY (id_padrao_assento)
 REFERENCES public.padrao_assento (id_padrao_assento) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: filme_fk | type: CONSTRAINT --
 -- ALTER TABLE public.sala DROP CONSTRAINT IF EXISTS filme_fk CASCADE;
-ALTER TABLE public.sala ADD CONSTRAINT filme_fk FOREIGN KEY (id_filme_filme)
+ALTER TABLE public.sala ADD CONSTRAINT filme_fk FOREIGN KEY (id_filme)
 REFERENCES public.filme (id_filme) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
@@ -239,16 +241,35 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- object: cliente_fk | type: CONSTRAINT --
 -- ALTER TABLE public.compra DROP CONSTRAINT IF EXISTS cliente_fk CASCADE;
-ALTER TABLE public.compra ADD CONSTRAINT cliente_fk FOREIGN KEY (id_cliente_cliente)
+ALTER TABLE public.compra ADD CONSTRAINT cliente_fk FOREIGN KEY (id_cliente)
 REFERENCES public.cliente (id_cliente) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: cliente_fk | type: CONSTRAINT --
 -- ALTER TABLE public.cartao DROP CONSTRAINT IF EXISTS cliente_fk CASCADE;
-ALTER TABLE public.cartao ADD CONSTRAINT cliente_fk FOREIGN KEY (id_cliente_cliente)
+ALTER TABLE public.cartao ADD CONSTRAINT cliente_fk FOREIGN KEY (id_cliente)
 REFERENCES public.cliente (id_cliente) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: horario_fk | type: CONSTRAINT --
+-- ALTER TABLE public.ingresso DROP CONSTRAINT IF EXISTS horario_fk CASCADE;
+ALTER TABLE public.ingresso ADD CONSTRAINT horario_fk FOREIGN KEY (id_horario_horario)
+REFERENCES public.horario (id_horario) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: assento_fk | type: CONSTRAINT --
+-- ALTER TABLE public.ingresso DROP CONSTRAINT IF EXISTS assento_fk CASCADE;
+ALTER TABLE public.ingresso ADD CONSTRAINT assento_fk FOREIGN KEY (id_assento)
+REFERENCES public.assento (id_assento) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: ingresso_uq | type: CONSTRAINT --
+-- ALTER TABLE public.ingresso DROP CONSTRAINT IF EXISTS ingresso_uq CASCADE;
+ALTER TABLE public.ingresso ADD CONSTRAINT ingresso_uq UNIQUE (id_assento);
 -- ddl-end --
 
 

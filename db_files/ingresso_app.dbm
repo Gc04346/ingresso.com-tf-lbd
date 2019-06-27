@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2-alpha" last-position="0,14" last-zoom="0.6"
+<dbmodel pgmodeler-ver="0.9.2-alpha" last-position="0,13" last-zoom="0.6"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -86,7 +86,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="ingresso">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1000" y="780"/>
+	<position x="920" y="640"/>
 	<column name="id_ingresso" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -228,6 +228,14 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<constraint name="assento_pk" type="pk-constr" table="public.assento">
 		<columns names="id_assento" ref-type="src-columns"/>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_padrao_assento" index="5"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="padrao_assento_fk" index="1"/>
+	</customidxs>
 </table>
 
 <relationship name="cinema_has_many_sala" type="rel1n"
@@ -240,7 +248,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-required="false" dst-required="false"/>
 
 <relationship name="padrao_horario_has_many_sala" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
+	 src-col-pattern="{sc}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#e8e7f8"
@@ -249,7 +257,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-required="false" dst-required="false"/>
 
 <relationship name="padrao_horario_has_many_horario" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
+	 src-col-pattern="{sc}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#f759a4"
@@ -259,7 +267,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	del-action="CASCADE"/>
 
 <relationship name="padrao_assento_has_many_sala" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
+	 src-col-pattern="{sc}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#949a83"
@@ -268,7 +276,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-required="false" dst-required="false"/>
 
 <relationship name="padrao_assento_has_many_assento" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
+	 src-col-pattern="{sc}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#1eeb99"
@@ -278,7 +286,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	del-action="CASCADE"/>
 
 <relationship name="filme_has_many_sala" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
+	 src-col-pattern="{sc}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#bb79ef"
@@ -314,7 +322,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-required="false" dst-required="false"/>
 
 <relationship name="cliente_has_many_compra" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
+	 src-col-pattern="{sc}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#28f22b"
@@ -323,12 +331,30 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-required="false" dst-required="false"/>
 
 <relationship name="cliente_has_many_cartao" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
+	 src-col-pattern="{sc}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#589e0e"
 	 src-table="public.cliente"
 	 dst-table="public.cartao"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="horario_has_many_ingresso" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#b930f5"
+	 src-table="public.horario"
+	 dst-table="public.ingresso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="ingresso_has_one_assento" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#a28df6"
+	 src-table="public.assento"
+	 dst-table="public.ingresso"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
