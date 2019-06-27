@@ -19,10 +19,10 @@ app.get('/', (request, response) => {
 
 // Rotas por url.
 app.get('/ingressos', db.getIngressos)
-app.get('/ingressos/id', db.getIngressoById)
+app.get('/ingressos/:id', db.getIngressoById)
 app.post('/ingressos', db.createIngresso)
-app.put('/ingresso/:id', db.updateIngresso)
-app.delete('/ingresso/:id', db.deleteIngresso)
+app.put('/ingressos/:id', db.updateIngresso)
+app.delete('/ingressos/:id', db.deleteIngresso)
 
 app.listen(port, () => {
 	console.log('App running on port ${port}.')

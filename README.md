@@ -39,13 +39,12 @@ su - postgres psql
 
 ### Criando um usuário para a aplicação e garantindo privilégios
 ``` sql
-CREATE ROLE app WITH LOGIN PASSWORD 'testeapp';
-ALTER ROLE app CREATEDB;
-CREATE DATABASE "cinema" OWNER "app";
+CREATE DATABASE "ingresso_app" OWNER "postgres";
+GRANT ALL PRIVILEGES ON DATABASE ingresso_app to postgres;
 \q -- sair do PostgreSQL.
 ```
 
-Pedimos que nesse momento o script seja executado via PgAdmin para criação das tabelas do banco.
+Pedimos que nesse momento o script seja executado via PgAdmin para criação das tabelas do banco. Há o script <code>db_files/ingresso_app.sql</code> responsável pela criação das tabelas. O script <code>db_files/popula.sql</code> é responsável pelo preenchimento do banco.
 
 ### Instalação da extensão para comunicação com o Banco de Dados.
 ``` shell

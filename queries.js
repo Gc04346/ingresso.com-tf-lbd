@@ -1,16 +1,16 @@
 // Arquivo com a configuração do banco de dados.
 const Pool = require('pg').Pool
 const pool = new Pool({
-	user: 'app',
+	user: 'postgres',
 	host: 'localhost',
-	database: 'cinema',
-	password: 'testeapp',
+	database: 'ingresso_app',
+	password: 'postgres',
 	port: '5432',
 }) 
 
 // Obtendo todos os ingressos.
 const getIngressos = (request, response) => {
-	pool.query('select * from ingresso order by id asc', (error, results) => {
+	pool.query('select * from ingresso order by id_ingresso asc', (error, results) => {
 		if (error) {
 			throw error
 		}
@@ -22,7 +22,7 @@ const getIngressos = (request, response) => {
 const getIngressoById = (request, response) => {
 	const id = parseInt(request.params.id)
 
-	pool.query('select * from ingresso where id = $1', [id], (error, results) => {
+	pool.query('select * from ingresso where id_ingresso = $1', [id], (error, results) => {
 		if (error) {
 			throw error
 		}
@@ -33,9 +33,9 @@ const getIngressoById = (request, response) => {
 // Gravando um ingresso.
 const createIngresso = (request, response) => {
 	// Campos que iremos persistir.
-	const { tipo, preco, assento, horario, data } = request.body
+	const { tipo, preco, data, id_sala, id_filme, id_compra, id_horario, id_assento } = request.body
 
-	pool.query('insert into ingresso (tipo, preco, assento, horario, data) values ($1, $2, $3, $4, $5)', [tipo, preco, assento, horario, data], (error, results) => {
+	pool.query('insert into ingresso (tipo, preco, data, id_sala, id_filme, id_compra, id_horario, id_assento) values ($1, $2, $3, $4, $5, $6, $7, $8)', [tipo, preco, data, id_sala, id_filme, id_compra, id_horario, id_assento], (error, results) => {
 		if (error) {
 			throw error
 		}
@@ -46,11 +46,11 @@ const createIngresso = (request, response) => {
 // Atualizar um ingresso.
 const updateIngresso = (request, response) => {
 	const id = parseInt(request.params.id)
-	const { tipo, preco, assento, horario, data } = request.body
+	const { tipo, preco, data, id_sala, id_filme, id_compra, id_horario, id_assento } = request.body
 
 	pool.query(
-		'update ingresso set tipo = $1, preco = $2, assento = $3, horario = $4, data = $5 where id $6',
-		[tipo, preco, assento, horario, data],
+		'update ingresso set tipo = $1, preco = $2, data = $3, id_sala = $4, id_filme = $5, id_compra = $6, id_horario = $7, id_assento = $8 where id_ingresso = $9',
+		[tipo, preco, data, id_sala, id_filme, id_compra, id_horario, id_assento, id],
 		(error, results) => {
 			if (error) {
 				throw error
@@ -63,7 +63,7 @@ const updateIngresso = (request, response) => {
 const deleteIngresso = (request, response) => {
 	const id = parseInt(request.params.id)
 
-	pool.query('delete from users where id = $1', [id], (error, results) => {
+	pool.query('delete from ingresso where id_ingresso = $1', [id], (error, results) => {
 		if (error) {
 			throw error
 		}
