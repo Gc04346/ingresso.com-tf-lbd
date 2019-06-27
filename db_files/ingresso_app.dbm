@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.2-alpha" last-position="0,14" last-zoom="0.6"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="cinema">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="620" y="40"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nome">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="companhia">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="endereco">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cidade">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="cinema_pk" type="pk-constr" table="public.cinema">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="horario">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1460" y="600"/>
+	<column name="id_horario" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="inicio">
+		<type name="date" length="0"/>
+	</column>
+	<column name="duracao">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="horario_pk" type="pk-constr" table="public.horario">
+		<columns names="id_horario" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="padrao_horario">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1440" y="320"/>
+	<column name="id_padrao_horario" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="codigo">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="padrao_horario_pk" type="pk-constr" table="public.padrao_horario">
+		<columns names="id_padrao_horario" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="sala">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="840" y="300"/>
+	<column name="id_sala" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="numero">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="sala_pk" type="pk-constr" table="public.sala">
+		<columns names="id_sala" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ingresso">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1000" y="780"/>
+	<column name="id_ingresso" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="tipo">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="preco">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="data">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="ingresso_pk" type="pk-constr" table="public.ingresso">
+		<columns names="id_ingresso" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="compra">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1360" y="1000"/>
+	<column name="id_compra" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="taxa_servico">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="total">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="compra_pk" type="pk-constr" table="public.compra">
+		<columns names="id_compra" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cliente">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="660" y="1020"/>
+	<column name="id_cliente" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="cpf">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="nome">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="endereco">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="cliente_pk" type="pk-constr" table="public.cliente">
+		<columns names="id_cliente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cartao">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="160" y="980"/>
+	<column name="id_cartao" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="numero">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="titular">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="data_vencimento">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="cartao_pk" type="pk-constr" table="public.cartao">
+		<columns names="id_cartao" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="filme">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="300" y="700"/>
+	<column name="id_filme" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="titulo">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="duracao">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="genero">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="classificacao">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="sinopse">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="filme_pk" type="pk-constr" table="public.filme">
+		<columns names="id_filme" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="padrao_assento">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="100"/>
+	<column name="id_padrao_assento" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="codigo">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="padrao_assento_pk" type="pk-constr" table="public.padrao_assento">
+		<columns names="id_padrao_assento" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="assento">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="320"/>
+	<column name="id_assento" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="numero">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="fileira">
+		<type name="char" length="0"/>
+	</column>
+	<column name="tipo">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="ocupacao">
+		<type name="bool" length="0"/>
+	</column>
+	<constraint name="assento_pk" type="pk-constr" table="public.assento">
+		<columns names="id_assento" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="cinema_has_many_sala" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#639b50"
+	 src-table="public.cinema"
+	 dst-table="public.sala"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="padrao_horario_has_many_sala" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#e8e7f8"
+	 src-table="public.padrao_horario"
+	 dst-table="public.sala"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="padrao_horario_has_many_horario" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#f759a4"
+	 src-table="public.padrao_horario"
+	 dst-table="public.horario"
+	 src-required="false" dst-required="false"
+	del-action="CASCADE"/>
+
+<relationship name="padrao_assento_has_many_sala" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#949a83"
+	 src-table="public.padrao_assento"
+	 dst-table="public.sala"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="padrao_assento_has_many_assento" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#1eeb99"
+	 src-table="public.padrao_assento"
+	 dst-table="public.assento"
+	 src-required="false" dst-required="false"
+	del-action="CASCADE"/>
+
+<relationship name="filme_has_many_sala" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#bb79ef"
+	 src-table="public.filme"
+	 dst-table="public.sala"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="sala_has_many_ingresso" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#cfdd3a"
+	 src-table="public.sala"
+	 dst-table="public.ingresso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="filme_has_many_ingresso" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#68510c"
+	 src-table="public.filme"
+	 dst-table="public.ingresso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="compra_has_many_ingresso" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#0375c6"
+	 src-table="public.compra"
+	 dst-table="public.ingresso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="cliente_has_many_compra" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#28f22b"
+	 src-table="public.cliente"
+	 dst-table="public.compra"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="cliente_has_many_cartao" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#589e0e"
+	 src-table="public.cliente"
+	 dst-table="public.cartao"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
