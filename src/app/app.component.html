@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Insira as informações do ingresso</p>
+      <label>Data (dd/mm/yyyy)</label>
+      <input type="text" class="form-control" [(ngModel)]="newData">
+      <label>Valor (XX.XX)</label>
+      <input type="text" class="form-control" [(ngModel)]="newValor">
+      <label>Tipo (Inteira = 1 ou Meia = 2)</label>
+      <input type="text" class="form-control" [(ngModel)]="newTipo">
+      <label class="error" *ngIf="error">Insira um valor válido para o tipo</label>
+      <br>
+      <button
+        class="btn btn-primary"
+        (click)="onAddServer()">Comprar</button>
+    </div>
+  </div>
+  <hr>
+</div>
