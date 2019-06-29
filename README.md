@@ -81,7 +81,7 @@ curl -X PUT -d "tipo=2" -d "preco=20.5" -d "data='2019-10-08'" -d "id_sala=1" -d
 ```
 
 ## Observações
-As configurações do banco de dados e as queries utilizadas para pesquisa, inserção, atualização e deleção podem ser vizualizadas no arquivo `queies.js`. Os mapeamentos utilizados podem ser visualizados no arquivo `index.js`.
+As configurações do banco de dados e as queries utilizadas para pesquisa, inserção, atualização e deleção podem ser vizualizadas no arquivo `queies.js`. Os mapeamentos utilizados podem ser visualizados no arquivo `index.js`. A qualquer momento os arquivos do banco de dados podem ser visualizados acessando a url `http://localhost:3000/ingressos`
 
 Para baixar o projeto no seu computador pedimos que execute os seguintes passos
 ``` shell
