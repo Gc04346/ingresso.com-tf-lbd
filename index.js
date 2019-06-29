@@ -11,6 +11,12 @@ app.use(
 		extended: true,
 	})
 )
+// Habilitando o CORS
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 
 // Página inicial do nosso site.
 app.get('/', (request, response) => {

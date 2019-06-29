@@ -7,7 +7,7 @@ Segue a arquitetura do projeto:
 - <code>index.js</code>: Arquivo com a configuração e mapeamento do servidor.
 - <code>queries.js</code>: Arquivo com os métodos de procura no banco de dados.
 
-# Preparação do AmbienteP
+# Preparação do Ambiente
 
 ## NodeJS
 
@@ -80,4 +80,11 @@ Troque <code>id_ingresso</code> pelo id desejado.
 curl -X PUT -d "tipo=2" -d "preco=20.5" -d "data='2019-10-08'" -d "id_sala=1" -d "id_filme=1" -d "id_compra=1" -d "id_horario=1" -d "id_assento=1" http://localhost:3000/ingressos/id_ingresso
 ```
 
+## Observações
+As configurações do banco de dados e as queries utilizadas para pesquisa, inserção, atualização e deleção podem ser vizualizadas no arquivo `queies.js`. Os mapeamentos utilizados podem ser visualizados no arquivo `index.js`.
 
+Para baixar o projeto no seu computador pedimos que execute os seguintes passos
+``` shell
+sudo apt install git
+git clone git@github.com:Gc04346/ingresso.com-tf-lbd.git
+```
