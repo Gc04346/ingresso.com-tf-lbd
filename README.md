@@ -22,6 +22,15 @@ nodejs -v
 npm -v
 ```
 
+## Observações
+As configurações do banco de dados e as queries utilizadas para pesquisa, inserção, atualização e deleção podem ser vizualizadas no arquivo `queies.js`. Os mapeamentos utilizados podem ser visualizados no arquivo `index.js`. A qualquer momento os arquivos do banco de dados podem ser visualizados acessando a url `http://localhost:3000/ingressos`
+
+Para baixar o projeto no seu computador pedimos que execute os seguintes passos
+``` shell
+sudo apt install git
+git clone git@github.com:Gc04346/ingresso.com-tf-lbd.git
+```
+
 ## PostgreSQL
 
 ### Login como usuário padrão
@@ -40,11 +49,13 @@ Pedimos que nesse momento o script seja executado via PgAdmin para criação das
 
 ### Instalação da extensão para comunicação com o Banco de Dados.
 ``` shell
+cd ingresso.com-tf-lbd # Entrando no diretório que se encontra o projeto.
 npm i express pg
 ```
 
 ### Rodando o servidor.
 ``` shell
+# Já na pasta onde se encontram os arquivos. Nome da pasta: ingresso.com-tf-lbd
 node index.js
 ```
 
@@ -78,13 +89,4 @@ curl -X PUT -d "tipo=2" -d "preco=20.5" -d "data='2019-10-08'" -d "id_sala=1" -d
 Troque <code>id_ingresso</code> pelo id desejado.
 ``` shell
 curl -X PUT -d "tipo=2" -d "preco=20.5" -d "data='2019-10-08'" -d "id_sala=1" -d "id_filme=1" -d "id_compra=1" -d "id_horario=1" -d "id_assento=1" http://localhost:3000/ingressos/id_ingresso
-```
-
-## Observações
-As configurações do banco de dados e as queries utilizadas para pesquisa, inserção, atualização e deleção podem ser vizualizadas no arquivo `queies.js`. Os mapeamentos utilizados podem ser visualizados no arquivo `index.js`. A qualquer momento os arquivos do banco de dados podem ser visualizados acessando a url `http://localhost:3000/ingressos`
-
-Para baixar o projeto no seu computador pedimos que execute os seguintes passos
-``` shell
-sudo apt install git
-git clone git@github.com:Gc04346/ingresso.com-tf-lbd.git
 ```
